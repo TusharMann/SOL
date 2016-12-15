@@ -1,15 +1,19 @@
 package com.example.tushar.sol;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    ArrayList<SOL> arrayList;
+    SOLAdapter adapter;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,15 +22,32 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-    }
+//        listView=(ListView)findViewById(R.id.listview);
+//        arrayList=new ArrayList<SOL>();
+//        adapter=new SOLAdapter(this,arrayList);
+
+
+//        final Call<JsonObject> jsonObjectCall=ApiClient.getInterface().getContacts();
+//
+//        jsonObjectCall.enqueue(new Callback<JsonObject>() {
+//            @Override
+//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+//                JsonObject jsonObject=(JsonObject)response.body();
+//
+//                for (int i = 0; i < jsonObject.getData().size(); i++)
+//                    arrayList.add(jsonObject.getData().get(i));
+//
+//                adapter.notifyDataSetChanged();
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<JsonObject> call, Throwable t) {
+//                Toast.makeText(getApplicationContext(),"No internet connection ",Toast.LENGTH_LONG).show();
+//            }
+//        });
+
+         }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
