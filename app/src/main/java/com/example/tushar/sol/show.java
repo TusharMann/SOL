@@ -1,5 +1,6 @@
 package com.example.tushar.sol;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,7 +10,7 @@ import android.webkit.WebView;
 
 public class show extends AppCompatActivity {
 
-    String download_file_url = "https://drive.google.com/open?id=0B3Q3M7qljFv2aC0wQ29RWWRMSXc";
+    String download_file_url = "http://sol.du.ac.in/admission/FeeReceipt_Dashboard.aspx?&SOL_ROLL_NO=04-1-02-000776&RECEIPT_NO=07-01-065231";
     WebView wv;
 
     @Override
@@ -28,8 +29,26 @@ public class show extends AppCompatActivity {
 
         wv.getSettings().setPluginState(WebSettings.PluginState.ON);
 
+        WebSettings webSettings = wv.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
         wv.getSettings().setAllowFileAccess(true);
-        wv.loadUrl(download_file_url);
+//        wv.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+//
+//        wv.addJavascriptInterface(new MyJavaScriptInterface(getApplicationContext()),"HTMLOUT");
+//
+//        wv.setWebViewClient(new WebViewClient() {
+//            @Override
+//            public void onPageFinished(WebView view, String url) {
+//                Log.i("Html","Inside");
+//                wv.loadUrl("javascript:window.HtmlViewer.showHTML" +
+//                        "('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
+//            }
+//        });
+
+       wv.loadUrl(download_file_url);
+
+       // wv.loadUrl("javascript:window.HTMLOUT.showHTML('<html>'+document.getElementsByTagName('html')[0].innerHTML+'</html>');");
 //        webView.setWebViewClient(new WebViewClient() {
 //            public boolean shouldOverrideUrlLoading (WebView view, String url) {
 //                if (url.endsWith(".pdf")) {
@@ -44,5 +63,22 @@ public class show extends AppCompatActivity {
 //
 
     }
+
+    class MyJavaScriptInterface
+    {
+        private Context ctx;
+
+        MyJavaScriptInterface(Context ctx) {
+            this.ctx = ctx;
+        }
+
+        @SuppressWarnings("unused")
+        public void showHTML(String html)
+        {
+            Log.i("Html",html);
+
+        }
+    }
+
 
 }
