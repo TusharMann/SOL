@@ -17,6 +17,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
-                        url, null, new Response.Listener<JSONObject>() {
+                        url,null, new Response.Listener<JSONObject>() {
 
                     @Override
                     public void onResponse(JSONObject response) {
@@ -119,6 +120,14 @@ public class MainActivity extends AppCompatActivity {
 
                             Toast.makeText(getApplicationContext(),
                                     response.toString(), Toast.LENGTH_SHORT).show();
+
+                            JSONArray arrayList=response.getJSONArray("Data");
+                            JSONObject json_data = arrayList.getJSONObject(0);
+                            String url=json_data.getString("FeeReceiptUrl");
+
+                            Toast.makeText(getApplicationContext(),
+                                    url, Toast.LENGTH_SHORT).show();
+
 
                         }
                         catch (Exception e) {
@@ -143,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                
+
                 requestQueue.add(jsonObjReq);
             }
 
