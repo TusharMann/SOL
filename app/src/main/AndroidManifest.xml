@@ -27,16 +27,18 @@
             android:label="@string/title_activity_show"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ShowPdf">
+           </activity>
+        <activity
+            android:name=".Translator"
+            android:label="@string/title_activity_translator"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity
-            android:name=".Translator"
-            android:label="@string/title_activity_translator"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
